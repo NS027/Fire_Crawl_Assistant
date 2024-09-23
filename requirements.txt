@@ -1,0 +1,5 @@
+python-dotenv
+langchain
+firecrawl-py==0.0.20
+langchain-chroma
+langchain-openai
