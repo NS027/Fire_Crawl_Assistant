@@ -139,7 +139,104 @@ def select_database():
         except ValueError:
             print("Invalid input. Please enter a number or 'q'.")
 
+# def main():
+#     while True:
+#         print("\nWhat do you want to do?")
+#         print("1. Just crawl webpages to store in database")
+#         print("2. Crawl webpages and ask questions")
+#         print("3. Ask questions (using existing database)")
+#         print("4. Exit")
+        
+#         choice = input("Enter your choice (1-4): ")
+
+#         if choice == '1':
+#             urls = get_urls()
+#             if urls:
+#                 create_vector_store(urls)
+#             else:
+#                 print("No URLs entered. Returning to main menu.")
+#         elif choice == '2':
+#             urls = get_urls()
+#             if urls:
+#                 persistent_directory = create_vector_store(urls)
+#                 contextualize_q_system_prompt = input("Enter the contextualize question system prompt (press Enter for default): ") or (
+#                     "Given a chat history and the latest user question "
+#                     "which might reference context in the chat history, "
+#                     "formulate a standalone question which can be understood "
+#                     "without the chat history. Do NOT answer the question, just "
+#                     "reformulate it if needed and otherwise return it as is."
+#                 )
+#                 qa_system_prompt = input("Enter the answer question system prompt (press Enter for default): ") or (
+#                     "You are an assistant for question-answering tasks. Use "
+#                     "the following pieces of retrieved context to answer the "
+#                     "question. If you don't know the answer, just say that you "
+#                     "don't know. Use three sentences maximum and keep the answer "
+#                     "concise."
+#                     "\n\n"
+#                     "{context}"
+#                 )
+#                 rag_chain = setup_rag_chain(persistent_directory, contextualize_q_system_prompt, qa_system_prompt)
+#                 continual_chat(rag_chain)
+#             else:
+#                 print("No URLs entered. Returning to main menu.")
+#         elif choice == '3':
+#             persistent_directory = select_database()
+#             if persistent_directory:
+#                 contextualize_q_system_prompt = input("Enter the contextualize question system prompt (press Enter for default): ") or (
+#                     "Given a chat history and the latest user question "
+#                     "which might reference context in the chat history, "
+#                     "formulate a standalone question which can be understood "
+#                     "without the chat history. Do NOT answer the question, just "
+#                     "reformulate it if needed and otherwise return it as is."
+#                 )
+
+#                 qa_system_prompt = input("Enter the answer question system prompt (press Enter for default): ") or (
+#                     "You are an assistant for question-answering tasks. Use "
+#                     "the following pieces of retrieved context to answer the "
+#                     "question. If you don't know the answer, just say that you "
+#                     "don't know. Use three sentences maximum and keep the answer "
+#                     "concise."
+#                     "\n\n"
+#                     "{context}"
+#                 )
+#                 rag_chain = setup_rag_chain(persistent_directory, contextualize_q_system_prompt, qa_system_prompt)
+#                 continual_chat(rag_chain)
+#             else:
+#                 print("No database selected. Returning to main menu.")
+#         elif choice == '4':
+#             print("Exiting the program. Goodbye!")
+#             break
+#         else:
+#             print("Invalid choice. Please try again.")
+
 def main():
+    contextualize_q_system_prompt = """
+    You are an AI assistant specializing in cloud computing services. Given the chat history and the latest user question, which might reference context in the chat history, formulate a standalone question focused on comparing cloud providers' services in AI, IoT, compute, or database offerings. 
+
+    Key points to consider:
+    1. Focus on AWS, Google Cloud, Microsoft Azure, or IBM Cloud.
+    2. Emphasize comparisons in virtual machines, managed SQL databases, machine learning, or IoT services.
+    3. Highlight key differences in features, performance, or management tools.
+
+    Do NOT answer the question, just reformulate it if needed to focus on these aspects, or return it as is if it already aligns with these criteria.
+    """
+
+    qa_system_prompt = """
+    You are an expert assistant for comparing cloud service providers, specifically focusing on AWS, Google Cloud, Microsoft Azure, and IBM Cloud. Use the following pieces of retrieved context to answer questions about their services in AI, IoT, compute, and database offerings. 
+
+    When answering:
+    1. Provide concise, well-researched comparisons.
+    2. Highlight key differences in features, performance, or management tools.
+    3. Focus on virtual machines, managed SQL databases, machine learning, or IoT services as relevant.
+    4. Keep answers brief and to the point, using three sentences maximum.
+    5. If you don't have specific information to compare, state this clearly.
+
+    Your response should be clear, professional, and easily understandable at a glance.
+
+    Context:
+    {context}
+    """
+
     while True:
         print("\nWhat do you want to do?")
         print("1. Just crawl webpages to store in database")
@@ -159,22 +256,6 @@ def main():
             urls = get_urls()
             if urls:
                 persistent_directory = create_vector_store(urls)
-                contextualize_q_system_prompt = input("Enter the contextualize question system prompt (press Enter for default): ") or (
-                    "Given a chat history and the latest user question "
-                    "which might reference context in the chat history, "
-                    "formulate a standalone question which can be understood "
-                    "without the chat history. Do NOT answer the question, just "
-                    "reformulate it if needed and otherwise return it as is."
-                )
-                qa_system_prompt = input("Enter the answer question system prompt (press Enter for default): ") or (
-                    "You are an assistant for question-answering tasks. Use "
-                    "the following pieces of retrieved context to answer the "
-                    "question. If you don't know the answer, just say that you "
-                    "don't know. Use three sentences maximum and keep the answer "
-                    "concise."
-                    "\n\n"
-                    "{context}"
-                )
                 rag_chain = setup_rag_chain(persistent_directory, contextualize_q_system_prompt, qa_system_prompt)
                 continual_chat(rag_chain)
             else:
@@ -182,22 +263,6 @@ def main():
         elif choice == '3':
             persistent_directory = select_database()
             if persistent_directory:
-                contextualize_q_system_prompt = input("Enter the contextualize question system prompt (press Enter for default): ") or (
-                    "Given a chat history and the latest user question "
-                    "which might reference context in the chat history, "
-                    "formulate a standalone question which can be understood "
-                    "without the chat history. Do NOT answer the question, just "
-                    "reformulate it if needed and otherwise return it as is."
-                )
-                qa_system_prompt = input("Enter the answer question system prompt (press Enter for default): ") or (
-                    "You are an assistant for question-answering tasks. Use "
-                    "the following pieces of retrieved context to answer the "
-                    "question. If you don't know the answer, just say that you "
-                    "don't know. Use three sentences maximum and keep the answer "
-                    "concise."
-                    "\n\n"
-                    "{context}"
-                )
                 rag_chain = setup_rag_chain(persistent_directory, contextualize_q_system_prompt, qa_system_prompt)
                 continual_chat(rag_chain)
             else:
