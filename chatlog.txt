@@ -1,0 +1,64 @@
+Fire_Crawl_Assistant % python3 Assistant_v1.py
+
+What do you want to do?
+1. Just crawl webpages to store in database
+2. Crawl webpages and ask questions
+3. Ask questions (using existing database)
+4. Exit
+Enter your choice (1-4): 3
+No existing databases found.
+No database selected. Returning to main menu.
+
+What do you want to do?
+1. Just crawl webpages to store in database
+2. Crawl webpages and ask questions
+3. Ask questions (using existing database)
+4. Exit
+Enter your choice (1-4): 2
+Enter URL(s) to crawl (separate multiple URLs with commas, or press Enter to finish): https://aws.amazon.com/rds/features/, https://cloud.google.com/sql?utm_source=google&utm_medium=cpc&utm_campaign=na-CA-all-en-dr-bkws-all-all-trial-e-dr-1707554&utm_content=text-ad-none-any-DEV_c-CRE_678241001169-ADGP_Hybrid+%7C+BKWS+-+MIX+%7C+Txt-Databases-Cloud+SQL-KWID_43700077224547386-kwd-28489936691&utm_term=KW_google%20cloud%20sql-ST_google+cloud+sql&gad_source=1&gclid=Cj0KCQjwo8S3BhDeARIsAFRmkOMAUwcTrpLk0x3cnilUNnHq-Ym4knBnP5DIEchl1Hn9BMq2VCdO98gaAovSEALw_wcB&gclsrc=aw.ds#features
+Begin crawling the website: https://aws.amazon.com/rds/features/
+Finished crawling https://aws.amazon.com/rds/features/
+Begin crawling the website: https://cloud.google.com/sql?utm_source=google&utm_medium=cpc&utm_campaign=na-CA-all-en-dr-bkws-all-all-trial-e-dr-1707554&utm_content=text-ad-none-any-DEV_c-CRE_678241001169-ADGP_Hybrid+%7C+BKWS+-+MIX+%7C+Txt-Databases-Cloud+SQL-KWID_43700077224547386-kwd-28489936691&utm_term=KW_google%20cloud%20sql-ST_google+cloud+sql&gad_source=1&gclid=Cj0KCQjwo8S3BhDeARIsAFRmkOMAUwcTrpLk0x3cnilUNnHq-Ym4knBnP5DIEchl1Hn9BMq2VCdO98gaAovSEALw_wcB&gclsrc=aw.ds#features
+Finished crawling https://cloud.google.com/sql?utm_source=google&utm_medium=cpc&utm_campaign=na-CA-all-en-dr-bkws-all-all-trial-e-dr-1707554&utm_content=text-ad-none-any-DEV_c-CRE_678241001169-ADGP_Hybrid+%7C+BKWS+-+MIX+%7C+Txt-Databases-Cloud+SQL-KWID_43700077224547386-kwd-28489936691&utm_term=KW_google%20cloud%20sql-ST_google+cloud+sql&gad_source=1&gclid=Cj0KCQjwo8S3BhDeARIsAFRmkOMAUwcTrpLk0x3cnilUNnHq-Ym4knBnP5DIEchl1Hn9BMq2VCdO98gaAovSEALw_wcB&gclsrc=aw.ds#features
+[2024-09-23 01:18:29 - langchain_text_splitters.base:122 - WARNING] Created a chunk of size 37740, which is longer than the specified 1000
+[2024-09-23 01:18:29 - langchain_text_splitters.base:122 - WARNING] Created a chunk of size 1099, which is longer than the specified 1000
+[2024-09-23 01:18:29 - langchain_text_splitters.base:122 - WARNING] Created a chunk of size 1307, which is longer than the specified 1000
+[2024-09-23 01:18:29 - langchain_text_splitters.base:122 - WARNING] Created a chunk of size 1914, which is longer than the specified 1000
+[2024-09-23 01:18:29 - langchain_text_splitters.base:122 - WARNING] Created a chunk of size 1965, which is longer than the specified 1000
+[2024-09-23 01:18:29 - langchain_text_splitters.base:122 - WARNING] Created a chunk of size 1481, which is longer than the specified 1000
+[2024-09-23 01:18:29 - langchain_text_splitters.base:122 - WARNING] Created a chunk of size 1225, which is longer than the specified 1000
+[2024-09-23 01:18:29 - langchain_text_splitters.base:122 - WARNING] Created a chunk of size 1690, which is longer than the specified 1000
+[2024-09-23 01:18:29 - langchain_text_splitters.base:122 - WARNING] Created a chunk of size 2794, which is longer than the specified 1000
+[2024-09-23 01:18:29 - langchain_text_splitters.base:122 - WARNING] Created a chunk of size 2794, which is longer than the specified 1000
+[2024-09-23 01:18:29 - langchain_text_splitters.base:122 - WARNING] Created a chunk of size 6691, which is longer than the specified 1000
+[2024-09-23 01:18:29 - langchain_text_splitters.base:122 - WARNING] Created a chunk of size 13609, which is longer than the specified 1000
+[2024-09-23 01:18:29 - langchain_text_splitters.base:122 - WARNING] Created a chunk of size 1024, which is longer than the specified 1000
+
+Total document chunks: 332
+
+--- Creating vector store in /Users/chris/Desktop/6620/Fire_Crawl_Assistant/db/chroma_db_firecrawl_-5080104526987433319 ---
+--- Finished creating vector store in /Users/chris/Desktop/6620/Fire_Crawl_Assistant/db/chroma_db_firecrawl_-5080104526987433319 ---
+Enter the contextualize question system prompt (press Enter for default): 
+Enter the answer question system prompt (press Enter for default): 
+Start chatting with the AI! Type 'exit' to end the conversation.
+You: give the comparision with the AWS RDS vs. Google Cloud SQL, based on Deployment speed Backup options Support for SQL variants.
+AI: I'm sorry, but the provided context does not contain information comparing AWS RDS and Google Cloud SQL based on deployment speed, backup options, and support for SQL variants.
+You: Give me the comnparision with the AWS RDS and Google Cloud SQL
+AI: I'm sorry, but the provided context does not contain information comparing AWS RDS and Google Cloud SQL.
+You: tell me something about Amazon RDS features
+AI: Amazon RDS is a fully managed, cost-effective relational database with high standards of security. It automates administrative tasks such as provisioning, patching, and backups, freeing up time for database administrators to focus on innovation and driving business value. Amazon RDS supports eight popular database engines and offers features to support high availability, performance, and security, such as Multi-AZ, Reserved Instances, and permission control via AWS IAM.
+You: how about Google Cloud SQL
+AI: Google Cloud SQL is a fully managed service that provides relational databases in the cloud. It supports MySQL, PostgreSQL, and SQL Server database engines. It is valued for its openness, ease of use, security, cost-efficiency, and its seamless integration with other Google Cloud services. This allows developers to build and deploy applications with ease. It also supports low-latency database replication for near real-time insights on operational data.
+You: where is the source you got for that answer
+AI: I'm sorry for any confusion, but as an AI model developed by OpenAI, I generate responses based on a mixture of licensed data, data created by human trainers, and publicly available data. For this question, I didn't pull the information from a specific source or document. Instead, I used my training data to generate a response based on common knowledge and general information about Google Cloud SQL.
+You: Based on the database, what is AWS RDS
+AI: Amazon RDS (Relational Database Service) is a managed relational database service provided by Amazon Web Services. It supports eight popular database engines including Amazon Aurora (PostgreSQL-Compatible Edition and MySQL-Compatible Edition), RDS for PostgreSQL, RDS for MySQL, RDS for MariaDB, RDS for SQL Server, RDS for Oracle, and RDS for Db2. Amazon RDS handles database management tasks such as provisioning, patching, backup, recovery, failure detection, and repair, freeing up time for database administrators to focus on other tasks.
+You: exit
+
+What do you want to do?
+1. Just crawl webpages to store in database
+2. Crawl webpages and ask questions
+3. Ask questions (using existing database)
+4. Exit
+Enter your choice (1-4): 4
+Exiting the program. Goodbye!
